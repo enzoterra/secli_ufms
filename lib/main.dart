@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SECLI',
       theme: tema,
-      home: const Home(),
+      home: const Home(urlIndex: 1,),
     );
   }
 }

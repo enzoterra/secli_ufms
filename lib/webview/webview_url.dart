@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:Secli/components/topbar.dart';
-import 'package:Secli/drawer.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebviewUrl extends StatefulWidget {
@@ -17,10 +15,7 @@ class WebviewUrlState extends State<WebviewUrl> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(60), child: TopBar()),
-      body: Stack(children: <Widget>[
+    return Stack(children: <Widget>[
         WebView(
           initialUrl: widget.url,
           javascriptMode: JavascriptMode.unrestricted,
@@ -35,8 +30,6 @@ class WebviewUrlState extends State<WebviewUrl> {
                 child: CircularProgressIndicator(),
               )
             : const Stack(),
-      ]),
-      drawer: const NavDrawer(),
-    );
+      ]);
   }
 }

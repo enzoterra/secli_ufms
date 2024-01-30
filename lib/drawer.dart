@@ -39,7 +39,7 @@ class NavDrawer extends StatelessWidget {
               title: const Text("Início"),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => const Home())));
+                    MaterialPageRoute(builder: ((context) => const Home(urlIndex: 1,))));
               },
             ),
             const Divider(),
