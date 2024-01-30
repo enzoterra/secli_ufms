@@ -33,7 +33,6 @@ class NavDrawer extends StatelessWidget {
                         fontSize: 24),
                   ),
                 ])),
-
             const Divider(),
             ListTile(
               leading: const Icon(Icons.home),
@@ -47,44 +46,29 @@ class NavDrawer extends StatelessWidget {
 
             /* SUPORTE */
             const TitleDivisor(title: "Suporte"),
-          
             const CustomTile(index: 0, title: "GLPI", icon: Icons.support_agent),
-
             const CustomTile(index: 1, title: "Whaticket", icon: Icons.send),
-
             const CustomTile(index: 2, title: "Passaporte", icon: Icons.manage_accounts),
-
             const CustomTile(index: 3, title: "Siscad", icon: Icons.school),
-            
             const Divider(),
 
             /* REDES */
             const TitleDivisor(title: "Redes"),
-
             const CustomTile(index: 4, title: "SGR", icon: Icons.public),
-            
             const CustomTile(index: 5, title: "Mapa de Redes", icon: Icons.wifi),
-            
             const CustomTile(index: 6, title: "Situação Redes", icon: Icons.cloud),
-            
             const Divider(),
 
             /* Ativos */
             const TitleDivisor(title: "Ativos"),
-
             const CustomTile(index: 7, title: "Patrimônios", icon: Icons.view_week),
-            
             const Divider(),
 
             /* UFMS */
             const TitleDivisor(title: "UFMS"),
-
             const CustomTile(index: 8, title: "RMO", icon: Icons.work_history),
-            
             const CustomTile(index: 9, title: "Intranet", icon: Icons.badge),
-            
             const CustomTile(index: 10, title: "Sistemas", icon: Icons.dns),
-            
             const Divider(),
 
             /* Rodapé */

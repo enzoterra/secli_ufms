@@ -13,7 +13,7 @@ class WebviewController extends StatefulWidget {
 }
 
 class WebViewState extends State<WebviewController> {
-  late String title, url;
+  //late String title, url;
   bool isLoading = true;
   final List<String> urls = [
     'https://suporte.ufms.br/front/ticket.php',

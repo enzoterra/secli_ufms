@@ -1,36 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class GLPI extends StatelessWidget {
+class GLPI extends StatefulWidget {
   const GLPI({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const WebView(
-      initialUrl: 'https://suporte.ufms.br/front/ticket.php', 
-      javascriptMode: JavascriptMode.unrestricted,
-    );
-  }
+  GLPIState createState() => GLPIState();
 }
 
-/*import 'package:webview_flutter/webview_flutter.dart';
+class GLPIState extends State<GLPI> {
+  bool isLoading = true;
 
-WebViewController controllerGlpi = WebViewController()
-  ..setJavaScriptMode(JavaScriptMode.unrestricted)
-  ..setNavigationDelegate(
-    NavigationDelegate(
-      onProgress: (int progress) {
-        // Update loading bar.
-      },
-      onPageStarted: (String url) {},
-      onPageFinished: (String url) {},
-      onWebResourceError: (WebResourceError error) {},
-      onNavigationRequest: (NavigationRequest request) {
-        if (request.url.startsWith('https://www.youtube.com/')) {
-          return NavigationDecision.prevent;
-        }
-        return NavigationDecision.navigate;
-      },
-    ),
-  )
-  ..loadRequest(Uri.parse('https://flutter.dev'));*/
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: <Widget>[
+      WebView(
+        initialUrl: 'https://suporte.ufms.br/front/ticket.php',
+        javascriptMode: JavascriptMode.unrestricted,
+        onPageFinished: (finish) {
+          setState(() {
+            isLoading = false;
+          });
+        },
+      ),
+      isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : const Stack(),
+    ]);
+  }
+}
