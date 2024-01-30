@@ -1,4 +1,4 @@
-import 'package:Secli/pages/webview.dart';
+import 'package:Secli/webview/webview_list.dart';
 import 'package:flutter/material.dart';
 
 class CustomTile extends StatelessWidget {
@@ -17,7 +17,7 @@ class CustomTile extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: ((context) => WebviewController(
+                builder: ((context) => WebviewList(
                       index: index,
                     ))));
       },

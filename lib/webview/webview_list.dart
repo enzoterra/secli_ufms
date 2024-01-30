@@ -3,16 +3,16 @@ import 'package:Secli/components/topbar.dart';
 import 'package:Secli/drawer.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class WebviewController extends StatefulWidget {
-  const WebviewController({super.key, required this.index});
+class WebviewList extends StatefulWidget {
+  const WebviewList({super.key, required this.index});
 
   final int index;
 
   @override
-  WebViewState createState() => WebViewState();
+  WebviewListState createState() => WebviewListState();
 }
 
-class WebViewState extends State<WebviewController> {
+class WebviewListState extends State<WebviewList> {
   //late String title, url;
   bool isLoading = true;
   final List<String> urls = [

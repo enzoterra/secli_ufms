@@ -1,10 +1,8 @@
+import 'package:Secli/webview/webview_url.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:Secli/components/topbar.dart';
 import 'package:Secli/drawer.dart';
-import 'package:Secli/webview/glpi.dart';
-import 'package:Secli/webview/passaporte.dart';
-import 'package:Secli/webview/sgr.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,10 +13,10 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   int currentIndex = 1;
-  final List<Widget> paginas = [
-    const SGR(),
-    const GLPI(),
-    const Passaporte(),
+  final List<String> paginas = [
+    'https://sgr.ufms.br/sgr/',
+    'https://suporte.ufms.br/front/ticket.php',
+    'https://passaporte.ufms.br/#/admin/contas',
   ];
 
   @override
@@ -29,7 +27,7 @@ class HomeState extends State<Home> {
           appBar: const PreferredSize(
               preferredSize: Size.fromHeight(60), child: TopBar()),
           //const PreferredSize(preferredSize: Size.fromHeight(60), child: TopBar())
-          body: paginas[currentIndex],
+          body: WebviewUrl(url: paginas[currentIndex]),
           bottomNavigationBar: Container(
               color: const Color.fromARGB(255, 240, 240, 240),
               child: Padding(
@@ -73,7 +71,7 @@ class HomeState extends State<Home> {
       return Scaffold(
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(60), child: TopBar()),
-        body: paginas[currentIndex],
+        body: WebviewUrl(url: paginas[currentIndex]),
         drawer: const NavDrawer(),
       );
     }
