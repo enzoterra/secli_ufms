@@ -49,12 +49,13 @@ class CustomBottomNavigation extends StatelessWidget {
                     ),
                   ],
                   onTabChange: (int index) {
-                    Navigator.push(
+                    //Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
                             builder: ((context) => Home(
                                   urlIndex: index,
-                                ))));
+                                ))), (Route<dynamic> route) => false);
                   })));
     } else {
       return Container(height: 0,);
