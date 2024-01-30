@@ -1,6 +1,7 @@
+import 'package:Secli/components/tile.dart';
+import 'package:Secli/components/title_divisor.dart';
 import 'package:flutter/material.dart';
 import 'package:Secli/home.dart';
-import 'package:Secli/pages/webview.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({super.key});
@@ -43,174 +44,50 @@ class NavDrawer extends StatelessWidget {
               },
             ),
             const Divider(),
-            Container(
-              padding: const EdgeInsets.all(18),
-              child: const Text("Suporte",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-            ),
-            ListTile(
-              leading: const Icon(Icons.support_agent),
-              title: const Text("GLPI"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 0,
-                            ))));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.send),
-              title: const Text("Whaticket"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 1,
-                            ))));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.manage_accounts),
-              title: const Text("Passaporte"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 2,
-                            ))));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.school),
-              title: const Text("Siscad"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 3,
-                            ))));
-              },
-            ),
+
+            /* SUPORTE */
+            const TitleDivisor(title: "Suporte"),
+          
+            const CustomTile(index: 0, title: "GLPI", icon: Icons.support_agent),
+
+            const CustomTile(index: 1, title: "Whaticket", icon: Icons.send),
+
+            const CustomTile(index: 2, title: "Passaporte", icon: Icons.manage_accounts),
+
+            const CustomTile(index: 3, title: "Siscad", icon: Icons.school),
+            
             const Divider(),
-            Container(
-              padding: const EdgeInsets.all(18),
-              child: const Text("Redes",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-            ),
-            ListTile(
-              leading: const Icon(Icons.public),
-              title: const Text("SGR"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 4,
-                            ))));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.wifi),
-              title: const Text("Mapa de Redes"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 5,
-                            ))));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.cloud),
-              title: const Text("Situação Redes"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 6,
-                            ))));
-              },
-            ),
+
+            /* REDES */
+            const TitleDivisor(title: "Redes"),
+
+            const CustomTile(index: 4, title: "SGR", icon: Icons.public),
+            
+            const CustomTile(index: 5, title: "Mapa de Redes", icon: Icons.wifi),
+            
+            const CustomTile(index: 6, title: "Situação Redes", icon: Icons.cloud),
+            
             const Divider(),
-            Container(
-              padding: const EdgeInsets.all(18),
-              child: const Text("Ativos",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-            ),
-            ListTile(
-              leading: const Icon(Icons.view_week),
-              title: const Text("Patrimônios"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 7,
-                            ))));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.computer),
-              title: const Text("Gestão de Ativos"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 8,
-                            ))));
-              },
-            ),
+
+            /* Ativos */
+            const TitleDivisor(title: "Ativos"),
+
+            const CustomTile(index: 7, title: "Patrimônios", icon: Icons.view_week),
+            
             const Divider(),
-            Container(
-              padding: const EdgeInsets.all(18),
-              child: const Text("UFMS",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-            ),
-            ListTile(
-              leading: const Icon(Icons.work_history),
-              title: const Text("RMO"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 9,
-                            ))));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.badge),
-              title: const Text("Intranet"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 10,
-                            ))));
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.dns),
-              title: const Text("Sistemas"),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => WebviewController(
-                              index: 11,
-                            ))));
-              },
-            ),
+
+            /* UFMS */
+            const TitleDivisor(title: "UFMS"),
+
+            const CustomTile(index: 8, title: "RMO", icon: Icons.work_history),
+            
+            const CustomTile(index: 9, title: "Intranet", icon: Icons.badge),
+            
+            const CustomTile(index: 10, title: "Sistemas", icon: Icons.dns),
+            
             const Divider(),
+
+            /* Rodapé */
             Container(
               padding: const EdgeInsets.all(18),
               child: const Text("Feito por Enzo Terra",

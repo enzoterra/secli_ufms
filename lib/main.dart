@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:Secli/home.dart';
-import 'package:Secli/theme.dart';
+import 'package:Secli/components/theme.dart';
 
 void main() {
   runApp(const MyApp());
