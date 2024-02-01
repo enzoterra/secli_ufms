@@ -54,7 +54,7 @@ class CustomBottomNavigation extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: ((context) => Home(
-                                  urlIndex: index,
+                                  //urlIndex: index,
                                 ))), (Route<dynamic> route) => false);
                   })));
     } else {
