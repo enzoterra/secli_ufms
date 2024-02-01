@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -10,6 +12,9 @@ class GLPI extends StatefulWidget {
 
 class GLPIState extends State<GLPI> {
   bool isLoading = true;
+  bool loggedIn = false;
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +23,29 @@ class GLPIState extends State<GLPI> {
         initialUrl: 'https://suporte.ufms.br/front/ticket.php',
         javascriptMode: JavascriptMode.unrestricted,
         onPageFinished: (finish) {
-          setState(() {
-            isLoading = false;
-          });
+          if (loggedIn == false) {
+            setState(() {
+              isLoading = false;
+              loggedIn = true;
+              _controller.future.then((value) => value.evaluateJavascript('''
+                             var login = document.getElementById("login_name");
+                             var password = document.getElementById("login_password");
+                             login.value = "enzo.terra";
+                             password.value = "Engipa2304@";
+                           '''));
+            });
+          }
+          /*if (loggedIn == 1) {
+            setState(() {
+              _controller.future.then((value) => value.evaluateJavascript('''
+                             document.getElementsByTagName('form').submit();
+                           '''));
+              loggedIn = 2;
+            });
+          }*/
+        },
+        onWebViewCreated: (WebViewController webViewController) {
+          _controller.complete(webViewController);
         },
       ),
       isLoading
