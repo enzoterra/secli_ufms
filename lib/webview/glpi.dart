@@ -31,7 +31,7 @@ class GLPIState extends State<GLPI> {
                              var login = document.getElementById("login_name");
                              var password = document.getElementById("login_password");
                              login.value = "enzo.terra";
-                             password.value = "Engipa2304@";
+                             password.value = "";
                            '''));
             });
           }

@@ -31,7 +31,7 @@ class SGRState extends State<SGR> {
                              var login = document.getElementById("username");
                              var password = document.getElementByName("j_password");
                              login.value = "enzo.terra";
-                             password.value = "Engipa2304@";
+                             password.value = "";
                            '''));
             });
           }

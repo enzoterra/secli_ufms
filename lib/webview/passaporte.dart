@@ -31,7 +31,7 @@ class PassaporteState extends State<Passaporte> {
                              var login = document.getElementById("passaporte");
                              var password = document.getElementById("senha");
                              login.value = "enzo.terra";
-                             password.value = "Engipa2304@";
+                             password.value = "";
                            '''));
             });
           }
