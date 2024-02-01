@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -10,6 +12,10 @@ class Passaporte extends StatefulWidget {
 
 class PassaporteState extends State<Passaporte> {
   bool isLoading = true;
+  bool loggedIn = false;
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
@@ -17,9 +23,21 @@ class PassaporteState extends State<Passaporte> {
         initialUrl: 'https://passaporte.ufms.br/#/admin/contas',
         javascriptMode: JavascriptMode.unrestricted,
         onPageFinished: (finish) {
-          setState(() {
-            isLoading = false;
-          });
+          if (loggedIn == false) {
+            setState(() {
+              isLoading = false;
+              loggedIn = true;
+              _controller.future.then((value) => value.evaluateJavascript('''
+                             var login = document.getElementById("passaporte");
+                             var password = document.getElementById("senha");
+                             login.value = "enzo.terra";
+                             password.value = "Engipa2304@";
+                           '''));
+            });
+          }
+        },
+        onWebViewCreated: (WebViewController webViewController) {
+          _controller.complete(webViewController);
         },
       ),
       isLoading
