@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -28,8 +27,8 @@ class PassaporteState extends State<Passaporte> {
               isLoading = false;
               loggedIn = true;
               _controller.future.then((value) => value.evaluateJavascript('''
-                             var login = document.getElementById("passaporte");
-                             var password = document.getElementById("senha");
+                             var login = document.getElementById("inputEmail");
+                             var password = document.getElementById("inputPassword");
                              login.value = "enzo.terra";
                              password.value = "";
                            '''));
