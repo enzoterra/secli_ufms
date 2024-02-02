@@ -48,9 +48,11 @@ class WebviewListState extends State<WebviewList> {
               setState(() {
                 isLoading = false;
                 loggedIn = true;
-                _controller.future.then((value) => value.evaluateJavascript('''
-                             var login = document.getElementById("inputEmail");
-                             var password = document.getElementById("inputPassword");
+                List<String> nomeSenha = setarIds(widget.index);
+                _controller.future.then((value) =>
+                    value.evaluateJavascript('''                             
+                             var login = document.getElementById("${nomeSenha[0]}");
+                             var password = document.getElementById("${nomeSenha[1]}");
                              login.value = "enzo.terra";
                              password.value = "";
                            '''));
@@ -85,19 +87,22 @@ class WebviewListState extends State<WebviewList> {
     'https://intranet.ufms.br/pages/home',
     'https://sistemas.ufms.br/'
     */
-    List<String> loginSenha;
-    String login;
-    String senha;
+    List<String> loginSenha = [];
+    String login = "";
+    String senha = "";
     if (index == 0) {
       login = "login_name";
       senha = "login_password";
     } else if (index == 1) {
       login = "email";
       senha = "password";
+    } else if (index == 2) {
+      login = "inputEmail";
+      senha = "inputPassword";
     } else if (index == 3 || index == 4 || index == 8 || index == 9) {
       login = "username";
       senha = "password";
-    } else {
+    } else if (index == 6) {
       login = "name";
       senha = "password";
     }
