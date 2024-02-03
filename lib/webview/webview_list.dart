@@ -38,7 +38,10 @@ class WebviewListState extends State<WebviewList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(60), child: TopBar()),
+          preferredSize: Size.fromHeight(60),
+          child: TopBar(
+            isSettings: false,
+          )),
       body: Stack(children: <Widget>[
         WebView(
           initialUrl: urls[widget.index],
@@ -87,7 +90,6 @@ class WebviewListState extends State<WebviewList> {
     'https://intranet.ufms.br/pages/home',
     'https://sistemas.ufms.br/'
     */
-    List<String> loginSenha = [];
     String login = "";
     String senha = "";
     if (index == 0) {
@@ -106,9 +108,7 @@ class WebviewListState extends State<WebviewList> {
       login = "name";
       senha = "password";
     }
-
-    loginSenha[0] = login;
-    loginSenha[1] = senha;
+    List<String> loginSenha = [login, senha];
     return loginSenha;
   }
 }

@@ -40,7 +40,10 @@ class HomeState extends State<Home> {
     if (deviceInfo.orientation == Orientation.portrait) {
       return Scaffold(
         appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(60), child: TopBar()),
+            preferredSize: Size.fromHeight(60),
+            child: TopBar(
+              isSettings: false,
+            )),
         body: paginas[currentIndex],
         /*Stack(children: <Widget>[
           WebView(
@@ -99,7 +102,10 @@ class HomeState extends State<Home> {
     } else {
       return Scaffold(
         appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(60), child: TopBar()),
+            preferredSize: Size.fromHeight(60),
+            child: TopBar(
+              isSettings: false,
+            )),
         body: paginas[currentIndex],
         /*Stack(children: <Widget>[
           WebView(
