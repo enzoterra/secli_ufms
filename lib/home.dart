@@ -77,7 +77,7 @@ class HomeState extends State<Home> {
                         horizontal: 30, vertical: 13),
                     tabBorderRadius: 5,
                     gap: 10,
-                    textSize: 12,
+                    textStyle: const TextStyle(fontSize: 12),
                     tabs: const [
                       GButton(
                         icon: Icons.devices,
