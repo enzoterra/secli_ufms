@@ -1,3 +1,5 @@
+import 'package:Secli/components/credentials_tile.dart';
+import 'package:Secli/components/links_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:Secli/components/topbar.dart';
 
@@ -13,34 +15,27 @@ class Settings extends StatefulWidget {
 class SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
+    final largura = MediaQuery.of(context).size.width;
+    
     return Scaffold(
         appBar: const PreferredSize(
             preferredSize: Size.fromHeight(60),
             child: TopBar(
               isSettings: true,
             )),
-        body: Container(
-          height: 500,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              Text("Salvar credenciais"),
-              SizedBox(
-                height: 30,
-              ),
-              TextFormField(
-                decoration: InputDecoration(hintText: "Email"),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              TextFormField(
-                decoration: InputDecoration(hintText: "Senha"),
-              )
-            ],
-          ),
-        ));
+        body: SizedBox(
+            width: largura * 0.8,
+            child: ListView(
+              children: const [
+                SizedBox(
+                  height: 70,
+                ),
+                CredentialsTile(),
+                SizedBox(
+                  height: 100,
+                ),
+                LinksTile()
+              ],
+            )));
   }
 }

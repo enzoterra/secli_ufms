@@ -69,7 +69,6 @@ class HomeState extends State<Home> {
                 child: GNav(
                     selectedIndex: currentIndex,
                     backgroundColor: const Color.fromARGB(255, 240, 240, 240),
-                    rippleColor: const Color.fromARGB(61, 41, 41, 41),
                     color: const Color.fromARGB(255, 51, 51, 51),
                     activeColor: Colors.white,
                     tabBackgroundColor: const Color.fromARGB(255, 60, 118, 226),
@@ -77,7 +76,7 @@ class HomeState extends State<Home> {
                         horizontal: 30, vertical: 13),
                     tabBorderRadius: 5,
                     gap: 10,
-                    textStyle: const TextStyle(fontSize: 12),
+                    textStyle: const TextStyle(fontSize: 12, color: Colors.white),
                     tabs: const [
                       GButton(
                         icon: Icons.devices,

@@ -1,4 +1,5 @@
 import 'package:Secli/home.dart';
+import 'package:Secli/settings.dart';
 import 'package:flutter/material.dart';
 
 class TopBar extends StatelessWidget {
@@ -33,7 +34,9 @@ class TopBar extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () => Navigator.pop(context),
+            color: Colors.white,
+            onPressed: () => Navigator.push(
+              context, MaterialPageRoute(builder: ((context) => const Settings()))),
           )
         ],
       );

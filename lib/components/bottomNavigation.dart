@@ -53,7 +53,7 @@ class CustomBottomNavigation extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                            builder: ((context) => Home(
+                            builder: ((context) => const Home(
                                   //urlIndex: index,
                                 ))), (Route<dynamic> route) => false);
                   })));
