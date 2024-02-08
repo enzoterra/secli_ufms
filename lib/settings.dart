@@ -23,7 +23,8 @@ class SettingsState extends State<Settings> {
             child: TopBar(
               isSettings: true,
             )),
-        body: SizedBox(
+        body: Center(child:
+        SizedBox(
             width: largura * 0.8,
             child: ListView(
               children: const [
@@ -34,8 +35,8 @@ class SettingsState extends State<Settings> {
                 SizedBox(
                   height: 100,
                 ),
-                LinksTile()
+                LinksTile(),
               ],
-            )));
+            ))));
   }
 }

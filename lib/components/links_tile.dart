@@ -26,7 +26,7 @@ class LinksTileState extends State<LinksTile> {
           height: 50,
         ),
         SizedBox(
-            height: 60,
+            height: 54,
             child: TextFormField(
               decoration: const InputDecoration(
                   hintText: "Nome", border: OutlineInputBorder()),
@@ -36,11 +36,27 @@ class LinksTileState extends State<LinksTile> {
           height: 15,
         ),
         SizedBox(
-            height: 60,
+            height: 54,
             child: TextFormField(
                 decoration: const InputDecoration(
                     hintText: "Link", border: OutlineInputBorder()),
-                style: const TextStyle(fontSize: 18)))
+                style: const TextStyle(fontSize: 18))),
+        const SizedBox(height: 30,),
+        Container(
+          decoration: const BoxDecoration(color: Color.fromARGB(255, 0, 81, 187), borderRadius: BorderRadius.all(Radius.circular(5))),
+          height: 40,
+          width: 120,
+          child: 
+          TextButton(
+              onPressed: () {
+                const snackBar = SnackBar(content: Text("Link adicionado!"));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
+              child: const Text(
+                "Adicionar",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16, letterSpacing: 1.07),
+              ))),
       ],
     );
   }

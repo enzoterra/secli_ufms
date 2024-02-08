@@ -1,4 +1,3 @@
-import 'package:Secli/home.dart';
 import 'package:flutter/material.dart';
 
 class CredentialsTile extends StatefulWidget {
@@ -27,7 +26,7 @@ class CredentialsTileState extends State<CredentialsTile> {
           height: 50,
         ),
         SizedBox(
-            height: 60,
+            height: 54,
             child: TextFormField(
               decoration: const InputDecoration(
                   hintText: "Email", border: OutlineInputBorder()),
@@ -37,7 +36,7 @@ class CredentialsTileState extends State<CredentialsTile> {
           height: 15,
         ),
         SizedBox(
-            height: 60,
+            height: 54,
             child: TextFormField(
                 decoration: const InputDecoration(
                     hintText: "Senha", border: OutlineInputBorder()),
@@ -45,17 +44,21 @@ class CredentialsTileState extends State<CredentialsTile> {
         const SizedBox(
           height: 30,
         ),
-        SizedBox(
+        Container(
+          decoration: const BoxDecoration(color: Color.fromARGB(255, 0, 81, 187), borderRadius: BorderRadius.all(Radius.circular(5))),
           height: 40,
           width: 90,
-          child: OutlinedButton(
-            //style: ButtonStyle(shape: MaterialStatePropertyAll(Outl)),
+          child: 
+          TextButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => const Home())));
+                const snackBar = SnackBar(content: Text("Informações de login salvas!"));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
-              child: const Text("Salvar", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),)),
-        )
+              child: const Text(
+                "Salvar",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16, letterSpacing: 1.07),
+              ))),
       ],
     );
   }
