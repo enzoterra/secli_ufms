@@ -1,5 +1,5 @@
-import 'package:Secli/components/tile.dart';
-import 'package:Secli/components/title_divisor.dart';
+import 'package:Secli/components/tiles/tile.dart';
+import 'package:Secli/components/tiles/title_divisor.dart';
 import 'package:flutter/material.dart';
 import 'package:Secli/home.dart';
 

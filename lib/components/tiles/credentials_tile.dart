@@ -1,3 +1,5 @@
+import 'package:Secli/components/settings/text_form_field_settings.dart';
+import 'package:Secli/components/settings/title_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,20 +17,30 @@ class CredentialsTileState extends State<CredentialsTile> {
   TextEditingController passwordController = TextEditingController();
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
 
-    final prefs = await SharedPreferences.getInstance();
-    String email = '';
-    String password = '';
-    
-    if (prefs.containsKey('email') && prefs.containsKey('password')) {
-      email = prefs.getString('email') ?? '';
-      password = prefs.getString('password') ?? '';
-    }
+    () async {
+      var prefs = await SharedPreferences.getInstance();
+      String email = '';
+      String password = '';
 
-    emailController.text = email;
-    passwordController.text = password;
+      if (prefs.containsKey('email') && prefs.containsKey('password')) {
+        email = prefs.getString('email') ?? '';
+        password = prefs.getString('password') ?? '';
+      }
+
+      emailController.text = email;
+      passwordController.text = password;
+    }();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -36,35 +48,15 @@ class CredentialsTileState extends State<CredentialsTile> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Informações de login",
-          style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 0, 81, 187)),
-        ),
+        const TitleSettings(title: "Informações de login"),
         const SizedBox(
           height: 50,
         ),
-        SizedBox(
-            height: 54,
-            child: TextFormField(
-              controller: emailController,
-              decoration: const InputDecoration(
-                  hintText: "Email", border: OutlineInputBorder()),
-              style: const TextStyle(fontSize: 18),
-            )),
+        TFFSettings(controller: emailController, hint: "Email", isPassword: false,),
         const SizedBox(
           height: 15,
         ),
-        SizedBox(
-            height: 54,
-            child: TextFormField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                    hintText: "Senha", border: OutlineInputBorder()),
-                style: const TextStyle(fontSize: 18))),
+        TFFSettings(controller: passwordController, hint: "Senha", isPassword: true,),
         const SizedBox(
           height: 34,
         ),
@@ -76,22 +68,22 @@ class CredentialsTileState extends State<CredentialsTile> {
               height: 40,
               width: 90,
               child: TextButton(
-                  onPressed: () {
-                    setState(() async {
-                      final prefs = await SharedPreferences.getInstance();
-                      prefs.setString('email', '');
-                      prefs.setString('password', '');
-                      if (prefs.getString('email') == '') {
-                        const snackBar = SnackBar(
-                            content: Text("Informações de login deletadas!"));
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      } else {
-                        const snackBar = SnackBar(
-                            content: Text(
-                                "Algo deu errado, não foi possível deletar"));
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      }
-                    });
+                  onPressed: () async {
+                    var prefs = await SharedPreferences.getInstance();
+                    prefs.setString('email', '');
+                    prefs.setString('password', '');
+                    emailController.text = '';
+                    passwordController.text = '';
+                    if (prefs.getString('email') == '') {
+                      const snackBar = SnackBar(
+                          content: Text("Informações de login deletadas!"));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    } else {
+                      const snackBar = SnackBar(
+                          content: Text(
+                              "Algo deu errado, não foi possível deletar"));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
                   },
                   child: const Text(
                     "Apagar",
@@ -109,7 +101,7 @@ class CredentialsTileState extends State<CredentialsTile> {
               width: 90,
               child: TextButton(
                   onPressed: () async {
-                    final prefs = await SharedPreferences.getInstance();
+                    var prefs = await SharedPreferences.getInstance();
                     prefs.setString('email', emailController.text);
                     prefs.setString('password', passwordController.text);
                     const snackBar =
