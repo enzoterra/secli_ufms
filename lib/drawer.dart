@@ -1,5 +1,6 @@
 import 'package:Secli/components/tiles/tile.dart';
 import 'package:Secli/components/tiles/title_divisor.dart';
+import 'package:Secli/list_links.dart';
 import 'package:flutter/material.dart';
 import 'package:Secli/home.dart';
 
@@ -8,6 +9,10 @@ class NavDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> urls = ListLinks().getUrls();
+    List<String> namesUrls = ListLinks().getNamesUrls();
+    List<IconData> iconsUrls = ListLinks().getIconsUrls();
+
     return Drawer(
         width: 280,
         child: Container(
@@ -49,54 +54,92 @@ class NavDrawer extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: ((context) =>
-                                        const Home(/*urlIndex: 1,*/))));
+                                    builder: ((context) => const Home())));
                           },
                         ),
                         const Divider(),
 
                         /* SUPORTE */
                         const TitleDivisor(title: "Suporte"),
-                        const CustomTile(
-                            index: 0, title: "GLPI", icon: Icons.support_agent),
-                        const CustomTile(
-                            index: 1, title: "Whaticket", icon: Icons.send),
-                        const CustomTile(
-                            index: 2,
-                            title: "Passaporte",
-                            icon: Icons.manage_accounts),
-                        const CustomTile(
-                            index: 3, title: "Siscad", icon: Icons.school),
+                        CustomTile(
+                          url: urls[0],
+                          nomeUrl: namesUrls[0],
+                          icon: iconsUrls[0],
+                        ),
+                        CustomTile(
+                          url: urls[1],
+                          nomeUrl: namesUrls[1],
+                          icon: iconsUrls[1],
+                        ),
+                        CustomTile(
+                          url: urls[2],
+                          nomeUrl: namesUrls[2],
+                          icon: iconsUrls[2],
+                        ),
+                        CustomTile(
+                          url: urls[3],
+                          nomeUrl: namesUrls[3],
+                          icon: iconsUrls[3],
+                        ),
+                        /*GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 1),
+                            itemBuilder: (BuildContext context, index) {
+                              for (int i = 0; i <= 3;) {
+                                return CustomTile(
+                                  url: urls[i],
+                                  nomeUrl: namesUrls[i],
+                                  icon: iconsUrls[i],
+                                );
+                              }
+                              return null;
+                            }),*/
                         const Divider(),
 
                         /* REDES */
                         const TitleDivisor(title: "Redes"),
-                        const CustomTile(
-                            index: 4, title: "SGR", icon: Icons.public),
-                        const CustomTile(
-                            index: 5, title: "Mapa de Redes", icon: Icons.wifi),
-                        const CustomTile(
-                            index: 6,
-                            title: "Situação Redes",
-                            icon: Icons.cloud),
+                        GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 1),
+                            itemBuilder: (BuildContext context, index) {
+                              for (int i = 4; i <= 6;) {
+                                return CustomTile(
+                                  url: urls[i],
+                                  nomeUrl: namesUrls[i],
+                                  icon: iconsUrls[i],
+                                );
+                              }
+                              return null;
+                            }),
                         const Divider(),
 
                         /* Ativos */
                         const TitleDivisor(title: "Ativos"),
-                        const CustomTile(
-                            index: 7,
-                            title: "Patrimônios",
-                            icon: Icons.view_week),
+                        CustomTile(
+                          url: urls[7],
+                          nomeUrl: namesUrls[7],
+                          icon: iconsUrls[7],
+                        ),
                         const Divider(),
 
                         /* UFMS */
                         const TitleDivisor(title: "UFMS"),
-                        const CustomTile(
-                            index: 8, title: "RMO", icon: Icons.work_history),
-                        const CustomTile(
-                            index: 9, title: "Intranet", icon: Icons.badge),
-                        const CustomTile(
-                            index: 10, title: "Sistemas", icon: Icons.dns),
+                        GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 1),
+                            itemBuilder: (BuildContext context, index) {
+                              for (int i = 8; i <= 10;) {
+                                return CustomTile(
+                                  url: urls[i],
+                                  nomeUrl: namesUrls[i],
+                                  icon: iconsUrls[i],
+                                );
+                              }
+                              return null;
+                            }),
                         const Divider(),
 
                         /* Rodapé */
