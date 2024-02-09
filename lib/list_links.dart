@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ListLinks {
   final List<String> urls = [
     'https://suporte.ufms.br/front/ticket.php',
-    'http://atendimento.ufms.br/tickets',
+    'http://atendimento.ufms.br/login',
     'https://passaporte.ufms.br/#/admin/contas',
     'https://siscad.ufms.br/administrativo/academicos',
     'https://sgr.ufms.br/sgr/',
