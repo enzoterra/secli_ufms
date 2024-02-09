@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ListLinks {
   final List<String> urls = [
@@ -29,7 +30,7 @@ class ListLinks {
     'Sistemas'
   ];
 
-   final List<IconData> iconsUrls = [
+  final List<IconData> iconsUrls = [
     Icons.support_agent,
     Icons.send,
     Icons.manage_accounts,
@@ -44,15 +45,33 @@ class ListLinks {
     Icons.link
   ];
 
-  List<String> getUrls(){
+  List<String> getUrls() {
     return urls;
   }
 
-  List<String> getNamesUrls(){
+  List<String> getNamesUrls() {
     return nameUrls;
   }
 
   List<IconData> getIconsUrls() {
     return iconsUrls;
+  }
+
+  Future<List<String>> getUrlsCustom() async {
+    List<String> urlsCustom = [];
+    var prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey('links')) {
+      urlsCustom = prefs.getStringList('links')!;
+    }
+    return urlsCustom;
+  }
+
+  Future<List<String>> getUrlsCustomNames() async {
+    List<String> urlsCustomNames = [];
+    var prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey('linkNames')) {
+      urlsCustomNames = prefs.getStringList('linkNames')!;
+    }
+    return urlsCustomNames;
   }
 }

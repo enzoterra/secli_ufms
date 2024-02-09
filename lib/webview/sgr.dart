@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class SGR extends StatefulWidget {
@@ -27,12 +28,24 @@ class SGRState extends State<SGR> {
             setState(() {
               isLoading = false;
               loggedIn = true;
-              _controller.future.then((value) => value.evaluateJavascript('''
+              _controller.future.then((value) async {
+                var prefs = await SharedPreferences.getInstance();
+                String name = "";
+                String password = "";
+
+                if (prefs.containsKey('email')) {
+                  name = prefs.getString('email')!;
+                }
+                if (prefs.containsKey('password')) {
+                  password = prefs.getString('password')!;
+                }
+                value.evaluateJavascript('''
                              var login = document.getElementById("username");
                              var password = document.getElementByName("j_password");
-                             login.value = "enzo.terra";
-                             password.value = "";
-                           '''));
+                             login.value = "$name";
+                             password.value = "$password";
+                           ''');
+              });
             });
           }
         },

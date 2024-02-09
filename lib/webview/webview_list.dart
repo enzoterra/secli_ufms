@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:Secli/components/topbar.dart';
 import 'package:Secli/drawer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
 
@@ -15,7 +16,6 @@ class WebviewList extends StatefulWidget {
 }
 
 class WebviewListState extends State<WebviewList> {
-  //late String title, url;
   bool isLoading = true;
   bool loggedIn = false;
   final Completer<WebViewController> _controller =
@@ -39,13 +39,25 @@ class WebviewListState extends State<WebviewList> {
                 isLoading = false;
                 loggedIn = true;
                 List<String> nomeSenha = setarIds(widget.nomeUrl);
-                _controller.future.then((value) =>
-                    value.evaluateJavascript('''                             
+                _controller.future.then((value) async {
+                  var prefs = await SharedPreferences.getInstance();
+                  String name = "";
+                  String password = "";
+
+                  if (prefs.containsKey('email')) {
+                    name = prefs.getString('email')!;
+                  }
+                  if (prefs.containsKey('password')) {
+                    password = prefs.getString('password')!;
+                  }
+
+                  value.evaluateJavascript('''                             
                              var login = document.getElementById("${nomeSenha[0]}");
                              var password = document.getElementById("${nomeSenha[1]}");
-                             login.value = "enzo.terra";
-                             password.value = "";
-                           '''));
+                             login.value = "$name";
+                             password.value = "$password";
+                           ''');
+                });
               });
             }
           },
@@ -88,7 +100,10 @@ class WebviewListState extends State<WebviewList> {
     } else if (nomeUrl == "Passaporte") {
       login = "inputEmail";
       senha = "inputPassword";
-    } else if (nomeUrl == "Siscad" || nomeUrl == "SGR" || nomeUrl == "RMO" || nomeUrl == "Intranet") {
+    } else if (nomeUrl == "Siscad" ||
+        nomeUrl == "SGR" ||
+        nomeUrl == "RMO" ||
+        nomeUrl == "Intranet") {
       login = "username";
       senha = "password";
     } else if (nomeUrl == "Situação Redes") {
