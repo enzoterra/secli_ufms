@@ -99,20 +99,21 @@ class NavDrawer extends StatelessWidget {
 
                         /* REDES */
                         const TitleDivisor(title: "Redes"),
-                        GridView.builder(
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 1),
-                            itemBuilder: (BuildContext context, index) {
-                              for (int i = 4; i <= 6;) {
-                                return CustomTile(
-                                  url: urls[i],
-                                  nomeUrl: namesUrls[i],
-                                  icon: iconsUrls[i],
-                                );
-                              }
-                              return null;
-                            }),
+                        CustomTile(
+                          url: urls[4],
+                          nomeUrl: namesUrls[4],
+                          icon: iconsUrls[4],
+                        ),
+                        CustomTile(
+                          url: urls[5],
+                          nomeUrl: namesUrls[5],
+                          icon: iconsUrls[5],
+                        ),
+                        CustomTile(
+                          url: urls[6],
+                          nomeUrl: namesUrls[6],
+                          icon: iconsUrls[6],
+                        ),
                         const Divider(),
 
                         /* Ativos */
@@ -126,20 +127,21 @@ class NavDrawer extends StatelessWidget {
 
                         /* UFMS */
                         const TitleDivisor(title: "UFMS"),
-                        GridView.builder(
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 1),
-                            itemBuilder: (BuildContext context, index) {
-                              for (int i = 8; i <= 10;) {
-                                return CustomTile(
-                                  url: urls[i],
-                                  nomeUrl: namesUrls[i],
-                                  icon: iconsUrls[i],
-                                );
-                              }
-                              return null;
-                            }),
+                        CustomTile(
+                          url: urls[8],
+                          nomeUrl: namesUrls[8],
+                          icon: iconsUrls[8],
+                        ),
+                        CustomTile(
+                          url: urls[9],
+                          nomeUrl: namesUrls[9],
+                          icon: iconsUrls[9],
+                        ),
+                        CustomTile(
+                          url: urls[10],
+                          nomeUrl: namesUrls[10],
+                          icon: iconsUrls[10],
+                        ),
                         const Divider(),
 
                         /* Rodapé */
