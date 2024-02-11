@@ -15,28 +15,28 @@ class Settings extends StatefulWidget {
 class SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    final largura = MediaQuery.of(context).size.width;
-    
-    return Scaffold(
-        appBar: const PreferredSize(
+    return const Scaffold(
+        appBar: PreferredSize(
             preferredSize: Size.fromHeight(60),
             child: TopBar(
               isSettings: true,
             )),
-        body: Center(child:
-        SizedBox(
-            width: largura * 0.8,
-            child: ListView(
-              children: const [
-                SizedBox(
-                  height: 70,
-                ),
-                CredentialsTile(),
-                SizedBox(
-                  height: 100,
-                ),
-                LinksTile(),
-              ],
-            ))));
+        body: SingleChildScrollView(
+            child: Center(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            SizedBox(
+              height: 70,
+            ),
+            CredentialsTile(),
+            SizedBox(
+              height: 100,
+            ),
+            LinksTile(),
+            SizedBox(
+              height: 100,
+            ),
+          ]),
+        )));
   }
 }

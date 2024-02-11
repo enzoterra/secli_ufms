@@ -66,6 +66,17 @@ class ListLinks {
     return urlsCustom;
   }
 
+  setUrlsCustom(List<String> urlsCustom) async {
+    var prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('links', urlsCustom);
+  }
+
+  deleteOneByUrlsCustom(String url) async {
+    List<String> urlsCustom = getUrls();
+    urlsCustom.remove(url);
+    setUrlsCustom(urlsCustom);
+  }
+
   Future<List<String>> getUrlsCustomNames() async {
     List<String> urlsCustomNames = [];
     var prefs = await SharedPreferences.getInstance();
@@ -73,5 +84,27 @@ class ListLinks {
       urlsCustomNames = prefs.getStringList('linkNames')!;
     }
     return urlsCustomNames;
+  }
+
+  setUrlsCustomName(List<String> urlsCustomName) async {
+    var prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('linkNames', urlsCustomName);
+  }
+
+  deleteOneByUrlsCustomName(String urlName) async {
+    List<String> urlsCustomName = getNamesUrls();
+    urlsCustomName.remove(urlName);
+    setUrlsCustomName(urlsCustomName);
+  }
+
+  Future<String> getNameByIndex(int index) async {
+    String name;
+    List<String> urlsCustomNames = [];
+    var prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey('linkNames')) {
+      urlsCustomNames = prefs.getStringList('linkNames')!;
+    }
+    name = urlsCustomNames[index];
+    return name;
   }
 }
