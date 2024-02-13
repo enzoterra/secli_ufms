@@ -170,27 +170,39 @@ class NavDrawerState extends State<NavDrawer> {
                     FutureBuilder<List<String>>(
                         future: urlsCustom,
                         builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            final listUrls = snapshot.data;
-                            if (listUrls!.isNotEmpty) {
-                              return Container(
-                                  height: 250,
-                                  width: widthDrawer,
-                                  color: Colors.white,
-                                  child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const TitleDivisor(
-                                            title: "Links Personalizados"),
-                                        FutureBuilder(
-                                            future: urlsCustomNames,
-                                            builder: (context, snapshot) {
-                                              if (snapshot.hasData) {
-                                                final listUrlNames =
-                                                    snapshot.data;
-                                                if (listUrlNames!.isNotEmpty) {
-                                                  return Expanded(
+                          List<String> listUrls = [];
+                          () async {
+                            listUrls = await urlsCustom;
+                          };
+                          if (listUrls.isNotEmpty) {
+                            return Container(
+                                height: 280,
+                                width: widthDrawer,
+                                color: Colors.white,
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const TitleDivisor(
+                                          title: "Links Personalizados"),
+                                      Container(
+                                        padding: const EdgeInsets.only(
+                                            top: 10, left: 18, bottom: 4),
+                                        child: const Text(
+                                            "Role para ver todos os links",
+                                            style: TextStyle(fontSize: 14)),
+                                      ),
+                                      FutureBuilder(
+                                          future: urlsCustomNames,
+                                          builder: (context, snapshot) {
+                                            List<String> listUrlNames = [];
+                                            () async {
+                                              listUrlNames =
+                                                  await urlsCustomNames;
+                                            };
+                                            if (listUrlNames.isNotEmpty) {
+                                              return Expanded(
+                                                  child: Scrollbar(
                                                       child: ListView.builder(
                                                           itemCount:
                                                               listUrls.length,
@@ -205,47 +217,22 @@ class NavDrawerState extends State<NavDrawer> {
                                                               icon: Icons.link,
                                                               isCustom: true,
                                                             );
-                                                          }));
-                                                } else {
-                                                  return Container();
-                                                }
-                                              } else {
-                                                return Container();
-                                              }
-                                            })
-                                      ]));
-                            } else {
-                              return Container();
-                            }
+                                                          })));
+                                            } else {
+                                              return Container();
+                                            }
+                                          })
+                                    ]));
                           } else {
                             return Container();
                           }
                         }),
 
-                    /*child: FutureBuilder<List<String>>(
-                      future: urlsCustom,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return Expanded(
-                              child: ListView.builder(
-                                  itemCount: snapshot.data?.length,
-                                  itemBuilder: (context, index) {
-                                    return CustomTile(
-                                        url: snapshot.data![index],
-                                        nomeUrl: namesUrls[index],
-                                        icon: Icons.link);
-                                  }));
-                        } else {
-                          return Container();
-                        }
-                      })*/
-
                     /* Rodapé */
                     Container(
                       width: widthDrawer,
                       color: Colors.white,
-                      padding:
-                          const EdgeInsets.only(left: 18, top: 14, bottom: 18),
+                      padding: const EdgeInsets.all(18),
                       child: const Text("Feito por Enzo Terra",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 8)),
