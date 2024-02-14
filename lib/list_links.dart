@@ -57,6 +57,7 @@ class ListLinks {
     return iconsUrls;
   }
 
+  // Urls Custom
   Future<List<String>> getUrlsCustom() async {
     List<String> urlsCustom = [];
     var prefs = await SharedPreferences.getInstance();
@@ -72,11 +73,12 @@ class ListLinks {
   }
 
   deleteOneByUrlsCustom(String url) async {
-    List<String> urlsCustom = getUrls();
+    List<String> urlsCustom = await getUrlsCustom();
     urlsCustom.remove(url);
     setUrlsCustom(urlsCustom);
   }
 
+  //Urls Custom Names
   Future<List<String>> getUrlsCustomNames() async {
     List<String> urlsCustomNames = [];
     var prefs = await SharedPreferences.getInstance();
@@ -92,7 +94,7 @@ class ListLinks {
   }
 
   deleteOneByUrlsCustomName(String urlName) async {
-    List<String> urlsCustomName = getNamesUrls();
+    List<String> urlsCustomName = await getUrlsCustomNames();
     urlsCustomName.remove(urlName);
     setUrlsCustomName(urlsCustomName);
   }

@@ -51,12 +51,14 @@ class WebviewListState extends State<WebviewList> {
                     password = prefs.getString('password')!;
                   }
 
-                  value.evaluateJavascript('''                             
+                  Timer(const Duration(milliseconds: 1500), () {
+                    value.evaluateJavascript('''                             
                              var login = document.getElementById("${nomeSenha[0]}");
                              var password = document.getElementById("${nomeSenha[1]}");
                              login.value = "$name";
                              password.value = "$password";
                            ''');
+                  });
                 });
               });
             }

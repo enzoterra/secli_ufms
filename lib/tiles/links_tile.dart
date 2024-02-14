@@ -78,6 +78,9 @@ class LinksTileState extends State<LinksTile> {
                         links.add(linkController.text);
                       }
 
+                      nameController.text = '';
+                      linkController.text = '';
+
                       prefs.setStringList('linkNames', linkNames);
                       prefs.setStringList('links', links);
 

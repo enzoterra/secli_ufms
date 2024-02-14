@@ -39,12 +39,14 @@ class SGRState extends State<SGR> {
                 if (prefs.containsKey('password')) {
                   password = prefs.getString('password')!;
                 }
-                value.evaluateJavascript('''
+                Timer(const Duration(milliseconds: 1500), () {
+                  value.evaluateJavascript('''
                              var login = document.getElementById("username");
                              var password = document.getElementByName("j_password");
                              login.value = "$name";
                              password.value = "$password";
                            ''');
+                });
               });
             });
           }

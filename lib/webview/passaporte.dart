@@ -38,12 +38,14 @@ class PassaporteState extends State<Passaporte> {
                 if (prefs.containsKey('password')) {
                   password = prefs.getString('password')!;
                 }
-                value.evaluateJavascript('''
+                Timer(const Duration(milliseconds: 1500), () {
+                  value.evaluateJavascript('''
                              var login = document.getElementById("inputEmail");
                              var password = document.getElementById("inputPassword");
                              login.value = "$name";
                              password.value = "$password";
                            ''');
+                });
               });
             });
           }

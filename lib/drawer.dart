@@ -1,5 +1,5 @@
-import 'package:Secli/components/tiles/custom_tile.dart';
-import 'package:Secli/components/tiles/title_divisor.dart';
+import 'package:Secli/tiles/custom_tile.dart';
+import 'package:Secli/tiles/title_divisor.dart';
 import 'package:Secli/list_links.dart';
 import 'package:flutter/material.dart';
 import 'package:Secli/home.dart';
@@ -171,9 +171,9 @@ class NavDrawerState extends State<NavDrawer> {
                         future: urlsCustom,
                         builder: (context, snapshot) {
                           List<String> listUrls = [];
-                          () async {
-                            listUrls = await urlsCustom;
-                          };
+                          if (snapshot.hasData) {
+                            listUrls = snapshot.data!;
+                          }
                           if (listUrls.isNotEmpty) {
                             return Container(
                                 height: 280,
@@ -194,12 +194,11 @@ class NavDrawerState extends State<NavDrawer> {
                                       ),
                                       FutureBuilder(
                                           future: urlsCustomNames,
-                                          builder: (context, snapshot) {
+                                          builder: (context, snapshot2) {
                                             List<String> listUrlNames = [];
-                                            () async {
-                                              listUrlNames =
-                                                  await urlsCustomNames;
-                                            };
+                                            if (snapshot2.hasData) {
+                                              listUrlNames = snapshot2.data!;
+                                            }
                                             if (listUrlNames.isNotEmpty) {
                                               return Expanded(
                                                   child: Scrollbar(

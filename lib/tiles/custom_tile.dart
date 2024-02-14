@@ -2,7 +2,7 @@ import 'package:Secli/list_links.dart';
 import 'package:Secli/webview/webview_list.dart';
 import 'package:flutter/material.dart';
 
-class CustomTile extends StatelessWidget {
+class CustomTile extends StatefulWidget {
   const CustomTile(
       {super.key,
       required this.url,
@@ -16,18 +16,23 @@ class CustomTile extends StatelessWidget {
   final bool isCustom;
 
   @override
+  CustomTileState createState() => CustomTileState();
+}
+
+class CustomTileState extends State<CustomTile> {
+  @override
   Widget build(BuildContext context) {
-    if (isCustom) {
+    if (widget.isCustom) {
       return ListTile(
-          leading: Icon(icon),
-          title: Text(nameUrl),
+          leading: Icon(widget.icon),
+          title: Text(widget.nameUrl),
           onTap: () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: ((context) => WebviewList(
-                          url: url,
-                          nomeUrl: nameUrl,
+                          url: widget.url,
+                          nomeUrl: widget.nameUrl,
                         ))));
           },
           onLongPress: () => showDialog<String>(
@@ -35,7 +40,7 @@ class CustomTile extends StatelessWidget {
               builder: (BuildContext context) => AlertDialog(
                     title: const Text('Excluir link personalizado?'),
                     content: const Text(
-                        'Isso excluirá esse link, para criar outro entre em Configurações e Adicionar link'),
+                        'Isso excluirá esse link, para criar outro entre em\nConfigurações -> Adicionar link'),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () => Navigator.pop(context, 'Cancelar'),
@@ -43,14 +48,18 @@ class CustomTile extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () async {
-                          ListLinks().deleteOneByUrlsCustom(url);
-                          ListLinks().deleteOneByUrlsCustomName(nameUrl);
+                          setState(() {
+                            ListLinks().deleteOneByUrlsCustom(widget.url);
+                            ListLinks()
+                                .deleteOneByUrlsCustomName(widget.nameUrl);
 
-                          const snackBar =
-                              SnackBar(content: Text("Link removido"));
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            const snackBar =
+                                SnackBar(content: Text("Link removido"));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
 
-                          Navigator.pop(context, 'Sim');
+                            Navigator.pop(context, 'Sim');
+                          });
                         },
                         child: const Text('Sim'),
                       ),
@@ -58,15 +67,15 @@ class CustomTile extends StatelessWidget {
                   )));
     } else {
       return ListTile(
-        leading: Icon(icon),
-        title: Text(nameUrl),
+        leading: Icon(widget.icon),
+        title: Text(widget.nameUrl),
         onTap: () {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: ((context) => WebviewList(
-                        url: url,
-                        nomeUrl: nameUrl,
+                        url: widget.url,
+                        nomeUrl: widget.nameUrl,
                       ))));
         },
       );

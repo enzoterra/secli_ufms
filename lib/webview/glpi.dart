@@ -39,12 +39,14 @@ class GLPIState extends State<GLPI> {
                 if (prefs.containsKey('password')) {
                   password = prefs.getString('password')!;
                 }
-                value.evaluateJavascript('''
+                Timer(const Duration(milliseconds: 1500), () {
+                  value.evaluateJavascript('''
                              var login = document.getElementById("login_name");
                              var password = document.getElementById("login_password");
                              login.value = "$name";
                              password.value = "$password";
                            ''');
+                });
               });
             });
           }

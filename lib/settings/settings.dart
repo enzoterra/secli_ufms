@@ -1,5 +1,5 @@
-import 'package:Secli/components/tiles/credentials_tile.dart';
-import 'package:Secli/components/tiles/links_tile.dart';
+import 'package:Secli/tiles/credentials_tile.dart';
+import 'package:Secli/tiles/links_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:Secli/components/topbar.dart';
 
