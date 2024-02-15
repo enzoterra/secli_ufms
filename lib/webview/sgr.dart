@@ -42,7 +42,7 @@ class SGRState extends State<SGR> {
                 Timer(const Duration(milliseconds: 1500), () {
                   value.evaluateJavascript('''
                              var login = document.getElementById("username");
-                             var password = document.getElementByName("j_password");
+                             var password = document.getElementsByName("j_password");
                              login.value = "$name";
                              password.value = "$password";
                            ''');

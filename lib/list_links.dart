@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ListLinks {
+class ListLinks extends ChangeNotifier{
   final List<String> urls = [
     'https://suporte.ufms.br/front/ticket.php',
     'http://atendimento.ufms.br/login',
@@ -9,7 +9,7 @@ class ListLinks {
     'https://siscad.ufms.br/administrativo/academicos',
     'https://sgr.ufms.br/sgr/',
     'https://www.google.com/maps/d/viewer?mid=1eShRhZJD22ongitLPOZ12zHU0Sd_vGE&ll=-20.503439514484356%2C-54.61543129999999&z=16',
-    'https://monitoramento-redes.ufms.br/zabbix.php?action=map.view&sysmapid=62',
+    'https://monitoramento-redes.ufms.br/index.php?request=zabbix.php%3Faction%3Dmap.view%26sysmapid%3D62',
     'https://patrimonio.ufms.br/',
     'https://rmo.ufms.br/pages/home',
     'https://intranet.ufms.br/pages/home',
@@ -45,17 +45,11 @@ class ListLinks {
     Icons.link
   ];
 
-  List<String> getUrls() {
-    return urls;
-  }
+  List<String> getUrls() => urls;
 
-  List<String> getNamesUrls() {
-    return nameUrls;
-  }
+  List<String> getNamesUrls() =>  nameUrls;
 
-  List<IconData> getIconsUrls() {
-    return iconsUrls;
-  }
+  List<IconData> getIconsUrls() => iconsUrls;
 
   // Urls Custom
   Future<List<String>> getUrlsCustom() async {
@@ -70,6 +64,8 @@ class ListLinks {
   setUrlsCustom(List<String> urlsCustom) async {
     var prefs = await SharedPreferences.getInstance();
     prefs.setStringList('links', urlsCustom);
+
+    notifyListeners();
   }
 
   deleteOneByUrlsCustom(String url) async {

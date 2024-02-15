@@ -18,7 +18,7 @@ class LinksTileState extends State<LinksTile> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-    return Container(
+    return SizedBox(
         width: width * 0.8,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,6 +47,7 @@ class LinksTileState extends State<LinksTile> {
             SizedBox(
                 height: 54,
                 child: TextFormField(
+                    keyboardType: TextInputType.url,
                     controller: linkController,
                     decoration: const InputDecoration(
                         hintText: "Link", border: OutlineInputBorder()),

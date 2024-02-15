@@ -39,6 +39,7 @@ dependencies:
   webview_flutter: ^3.0.0
   flutter_native_splash: ^2.3.2
   shared_preferences: ^2.0.8
+  provider: ^6.1.1 
 
 flutter_native_splash:
   background_image: "assets/images/splash.png"

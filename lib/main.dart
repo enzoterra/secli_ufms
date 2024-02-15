@@ -1,20 +1,24 @@
+import 'package:Secli/list_links.dart';
 import 'package:flutter/material.dart';
 import 'package:Secli/home.dart';
 import 'package:Secli/components/theme.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const SecliApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SecliApp extends StatelessWidget {
+  const SecliApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SECLI',
-      theme: tema,
-      home: const Home(/*urlIndex: 1,*/),
-    );
+    return ChangeNotifierProvider(
+        create: (context) => ListLinks(),
+        child: MaterialApp(
+          title: 'SECLI',
+          theme: tema,
+          home: const Home(/*urlIndex: 1,*/),
+        ));
   }
 }

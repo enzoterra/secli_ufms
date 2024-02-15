@@ -2,7 +2,7 @@ import 'package:Secli/list_links.dart';
 import 'package:Secli/webview/webview_list.dart';
 import 'package:flutter/material.dart';
 
-class CustomTile extends StatefulWidget {
+class CustomTile extends StatelessWidget {
   const CustomTile(
       {super.key,
       required this.url,
@@ -16,23 +16,18 @@ class CustomTile extends StatefulWidget {
   final bool isCustom;
 
   @override
-  CustomTileState createState() => CustomTileState();
-}
-
-class CustomTileState extends State<CustomTile> {
-  @override
   Widget build(BuildContext context) {
-    if (widget.isCustom) {
+    if (isCustom) {
       return ListTile(
-          leading: Icon(widget.icon),
-          title: Text(widget.nameUrl),
+          leading: Icon(icon),
+          title: Text(nameUrl),
           onTap: () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: ((context) => WebviewList(
-                          url: widget.url,
-                          nomeUrl: widget.nameUrl,
+                          url: url,
+                          nomeUrl: nameUrl,
                         ))));
           },
           onLongPress: () => showDialog<String>(
@@ -48,18 +43,14 @@ class CustomTileState extends State<CustomTile> {
                       ),
                       TextButton(
                         onPressed: () async {
-                          setState(() {
-                            ListLinks().deleteOneByUrlsCustom(widget.url);
-                            ListLinks()
-                                .deleteOneByUrlsCustomName(widget.nameUrl);
+                          ListLinks().deleteOneByUrlsCustom(url);
+                          ListLinks().deleteOneByUrlsCustomName(nameUrl);
 
-                            const snackBar =
-                                SnackBar(content: Text("Link removido"));
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
+                          const snackBar =
+                              SnackBar(content: Text("Link removido"));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
-                            Navigator.pop(context, 'Sim');
-                          });
+                          Navigator.pop(context, 'Sim');
                         },
                         child: const Text('Sim'),
                       ),
@@ -67,15 +58,15 @@ class CustomTileState extends State<CustomTile> {
                   )));
     } else {
       return ListTile(
-        leading: Icon(widget.icon),
-        title: Text(widget.nameUrl),
+        leading: Icon(icon),
+        title: Text(nameUrl),
         onTap: () {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: ((context) => WebviewList(
-                        url: widget.url,
-                        nomeUrl: widget.nameUrl,
+                        url: url,
+                        nomeUrl: nameUrl,
                       ))));
         },
       );

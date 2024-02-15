@@ -52,12 +52,21 @@ class WebviewListState extends State<WebviewList> {
                   }
 
                   Timer(const Duration(milliseconds: 1500), () {
-                    value.evaluateJavascript('''                             
+                    if (nomeSenha[1] == "j_password") {
+                      value.evaluateJavascript('''                             
+                             var login = document.getElementById("${nomeSenha[0]}");
+                             var password = document.getElementsByName("${nomeSenha[1]}");
+                             login.value = "$name";
+                             password.value = "$password";
+                           ''');
+                    } else {
+                      value.evaluateJavascript('''                             
                              var login = document.getElementById("${nomeSenha[0]}");
                              var password = document.getElementById("${nomeSenha[1]}");
                              login.value = "$name";
                              password.value = "$password";
                            ''');
+                    }
                   });
                 });
               });
@@ -78,19 +87,6 @@ class WebviewListState extends State<WebviewList> {
   }
 
   List<String> setarIds(String nomeUrl) {
-    /*ORDEM LISTA
-    'https://suporte.ufms.br/front/ticket.php',
-    'http://atendimento.ufms.br/tickets',
-    'https://passaporte.ufms.br/#/admin/contas',
-    'https://siscad.ufms.br/administrativo/academicos',
-    'https://sgr.ufms.br/sgr/',
-    'https://www.google.com/maps/d/viewer?mid=1eShRhZJD22ongitLPOZ12zHU0Sd_vGE&ll=-20.503439514484356%2C-54.61543129999999&z=16',
-    'https://monitoramento-redes.ufms.br/zabbix.php?action=map.view&sysmapid=62',
-    'https://patrimonio.ufms.br/',
-    'https://rmo.ufms.br/pages/home',
-    'https://intranet.ufms.br/pages/home',
-    'https://sistemas.ufms.br/'
-    */
     String login = "";
     String senha = "";
     if (nomeUrl == "GLPI") {
@@ -103,11 +99,13 @@ class WebviewListState extends State<WebviewList> {
       login = "inputEmail";
       senha = "inputPassword";
     } else if (nomeUrl == "Siscad" ||
-        nomeUrl == "SGR" ||
         nomeUrl == "RMO" ||
         nomeUrl == "Intranet") {
       login = "username";
       senha = "password";
+    } else if (nomeUrl == "SGR") {
+      login = "username";
+      senha = "j_password";
     } else if (nomeUrl == "Situação Redes") {
       login = "name";
       senha = "password";
