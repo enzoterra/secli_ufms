@@ -1,5 +1,5 @@
 import 'package:Secli/list_links.dart';
-import 'package:Secli/webview/webview_list.dart';
+import 'package:Secli/webview/webview_drawer.dart';
 import 'package:flutter/material.dart';
 
 class CustomTile extends StatelessWidget {
@@ -25,7 +25,7 @@ class CustomTile extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: ((context) => WebviewList(
+                    builder: ((context) => WebviewDrawer(
                           url: url,
                           nomeUrl: nameUrl,
                         ))));
@@ -64,7 +64,7 @@ class CustomTile extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: ((context) => WebviewList(
+                  builder: ((context) => WebviewDrawer(
                         url: url,
                         nomeUrl: nameUrl,
                       ))));

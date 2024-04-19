@@ -1,38 +1,46 @@
+import 'package:Secli/components/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:Secli/components/topbar.dart';
-import 'package:Secli/drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
 
-class WebviewList extends StatefulWidget {
-  const WebviewList({super.key, required this.url, required this.nomeUrl});
+class WebviewSystem extends StatefulWidget {
+  const WebviewSystem({super.key, required this.url, required this.nomeUrl});
 
   final String url;
   final String nomeUrl;
 
   @override
-  WebviewListState createState() => WebviewListState();
+  WebviewSystemState createState() => WebviewSystemState();
 }
 
-class WebviewListState extends State<WebviewList> {
+class WebviewSystemState extends State<WebviewSystem> {
   bool isLoading = true;
   bool loggedIn = false;
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
+  double webProgress = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(60),
-          child: TopBar(
-            isSettings: false,
-          )),
-      body: Stack(children: <Widget>[
+    return Column(children: [
+      SizedBox(
+        height: 5,
+        child: LinearProgressIndicator(
+          value: webProgress,
+          color: CustomColors().darkBlueMain,
+          backgroundColor: CustomColors().whiteBottomNavigation,
+        ),
+      ),
+      Expanded(
+          child: Stack(children: <Widget>[
         WebView(
           initialUrl: widget.url,
           javascriptMode: JavascriptMode.unrestricted,
+          gestureNavigationEnabled: true,
+          onProgress: (progress) => setState(() {
+            webProgress = progress / 100;
+          }),
           onPageFinished: (finish) {
             if (loggedIn == false) {
               setState(() {
@@ -81,9 +89,8 @@ class WebviewListState extends State<WebviewList> {
                 child: CircularProgressIndicator(),
               )
             : const Stack(),
-      ]),
-      drawer: const NavDrawer(),
-    );
+      ]))
+    ]);
   }
 
   List<String> setarIds(String nomeUrl) {

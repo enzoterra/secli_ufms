@@ -1,3 +1,4 @@
+import 'package:Secli/components/colors.dart';
 import 'package:Secli/settings/text_form_field_settings.dart';
 import 'package:Secli/settings/title_settings.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class CredentialsTileState extends State<CredentialsTile> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-    return Container(
+    return SizedBox(
         width: width * 0.8,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,9 +75,9 @@ class CredentialsTileState extends State<CredentialsTile> {
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                  decoration: BoxDecoration(
+                      color: CustomColors().grey,
+                      borderRadius: const BorderRadius.all(Radius.circular(5))),
                   height: 40,
                   width: 90,
                   child: TextButton(
@@ -97,18 +98,18 @@ class CredentialsTileState extends State<CredentialsTile> {
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
                       },
-                      child: const Text(
+                      child: Text(
                         "Apagar",
                         style: TextStyle(
-                            color: Color.fromARGB(255, 22, 22, 22),
+                            color: CustomColors().blackText,
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                             letterSpacing: 1.07),
                       ))),
               Container(
-                  decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 0, 81, 187),
-                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                  decoration: BoxDecoration(
+                      color: CustomColors().darkBlueMain,
+                      borderRadius: const BorderRadius.all(Radius.circular(5))),
                   height: 40,
                   width: 90,
                   child: TextButton(
@@ -120,10 +121,10 @@ class CredentialsTileState extends State<CredentialsTile> {
                             content: Text("Informações de login salvas!"));
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
-                      child: const Text(
+                      child: Text(
                         "Salvar",
                         style: TextStyle(
-                            color: Colors.white,
+                            color: CustomColors().salvarColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                             letterSpacing: 1.07),

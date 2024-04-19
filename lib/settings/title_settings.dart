@@ -1,3 +1,4 @@
+import 'package:Secli/components/colors.dart';
 import 'package:flutter/material.dart';
 
 class TitleSettings extends StatelessWidget {
@@ -9,10 +10,10 @@ class TitleSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 0, 81, 187)),
+              color: CustomColors().darkBlueMain),
         );
   }
 }

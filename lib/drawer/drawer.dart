@@ -1,3 +1,4 @@
+import 'package:Secli/drawer/topbar_drawer.dart';
 import 'package:Secli/tiles/custom_tile.dart';
 import 'package:Secli/tiles/title_divisor.dart';
 import 'package:Secli/list_links.dart';
@@ -25,30 +26,7 @@ class NavDrawer extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // TopBar Drawer
-                        Container(
-                            padding: const EdgeInsets.only(
-                                left: 16, right: 16, bottom: 18, top: 30),
-                            height: 130,
-                            decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 60, 118, 226)),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                      height: 70,
-                                      child: Image.asset(
-                                          "assets/images/logo-agetic.png")),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  const Text(
-                                    "S E C L I",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 24),
-                                  ),
-                                ])),
+                        const TopBarDrawer(),
 
                         // Menu
                         Container(
@@ -150,7 +128,6 @@ class NavDrawer extends StatelessWidget {
                                     icon: iconsUrls[10],
                                     isCustom: false,
                                   ),
-                                  const Divider(),
                                 ])),
 
                         /* Links Custom */

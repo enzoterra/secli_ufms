@@ -1,3 +1,5 @@
+import 'package:Secli/components/colors.dart';
+import 'package:Secli/components/icons.dart';
 import 'package:Secli/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -18,33 +20,33 @@ class CustomBottomNavigation extends StatelessWidget {
     MediaQueryData deviceInfo = MediaQuery.of(context);
     if (deviceInfo.orientation == Orientation.portrait) {
       return Container(
-          color: const Color.fromARGB(255, 240, 240, 240),
+          color: CustomColors().whiteBottomNavigation,
           child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 15.0, vertical: 0.0),
               child: GNav(
                   selectedIndex: urlIndex,
-                  backgroundColor: const Color.fromARGB(255, 240, 240, 240),
+                  backgroundColor:  CustomColors().whiteBottomNavigation,
                   rippleColor: const Color.fromARGB(61, 41, 41, 41),
                   color: const Color.fromARGB(255, 51, 51, 51),
                   activeColor: Colors.white,
-                  tabBackgroundColor: const Color.fromARGB(255, 60, 118, 226),
+                  tabBackgroundColor:  CustomColors().blueMain,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 13),
                   tabBorderRadius: 5,
                   gap: 10,
                   textStyle: const TextStyle(fontSize: 12),
-                  tabs: const [
+                  tabs: [
                     GButton(
-                      icon: Icons.devices,
+                      icon: CustomIcons().botnav1,
                       text: "SGR",
                     ),
                     GButton(
-                      icon: Icons.support_agent,
+                      icon: CustomIcons().botnav2,
                       text: "GLPI",
                     ),
                     GButton(
-                      icon: Icons.manage_accounts,
+                      icon: CustomIcons().botnav3,
                       text: "Passaporte",
                     ),
                   ],

@@ -1,3 +1,4 @@
+import 'package:Secli/components/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,12 +24,12 @@ class LinksTileState extends State<LinksTile> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "Adicionar link personalizado",
               style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 0, 81, 187)),
+                  color: CustomColors().darkBlueMain),
             ),
             const SizedBox(
               height: 50,
@@ -56,9 +57,9 @@ class LinksTileState extends State<LinksTile> {
               height: 34,
             ),
             Container(
-                decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 0, 81, 187),
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                decoration: BoxDecoration(
+                    color: CustomColors().darkBlueMain,
+                    borderRadius: const BorderRadius.all(Radius.circular(5))),
                 height: 40,
                 width: 120,
                 child: TextButton(
@@ -89,10 +90,10 @@ class LinksTileState extends State<LinksTile> {
                           SnackBar(content: Text("Link adicionado!"));
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     },
-                    child: const Text(
+                    child: Text(
                       "Adicionar",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: CustomColors().salvarColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
                           letterSpacing: 1.07),

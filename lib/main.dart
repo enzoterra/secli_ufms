@@ -18,7 +18,7 @@ class SecliApp extends StatelessWidget {
         child: MaterialApp(
           title: 'SECLI',
           theme: tema,
-          home: const Home(/*urlIndex: 1,*/),
+          home: const Home(),
         ));
   }
 }
