@@ -5,9 +5,9 @@ import 'package:local_auth_android/local_auth_android.dart';
 import 'package:local_auth/error_codes.dart' as auth_error;
 
 class LocalAuthService {
-  static final _auth = LocalAuthentication();
+  final _auth = LocalAuthentication();
 
-  static Future<bool> hasSupport({bool biometricOnly = true}) async {
+  Future<bool> hasSupport({bool biometricOnly = true}) async {
     //Verifica se o dispositivo possui suporte a autenticação biométrica
     final bool canCheck = await _auth.canCheckBiometrics;
 
@@ -19,7 +19,7 @@ class LocalAuthService {
     return canCheck || hasSupport; //Caso algum deles for verdadeira, haverá suporte
   }
 
-  static Future<bool> authenticate({String? message, bool biometricOnly = true}) async {
+  Future<bool> authenticate({String? message, bool biometricOnly = true}) async {
     try {
       final isAuthenticated = await _auth.authenticate(
         localizedReason: message ?? 'Por favor, realize a autenticação biométrica', //Motivo da solicitação de autenticação
