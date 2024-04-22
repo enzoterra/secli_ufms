@@ -1,5 +1,6 @@
 import 'package:Secli/auth/local_auth_service.dart';
 import 'package:Secli/components/colors.dart';
+import 'package:Secli/components/images.dart';
 import 'package:Secli/home.dart';
 import 'package:flutter/material.dart';
 
@@ -51,13 +52,7 @@ class AuthCheckState extends State<AuthCheck> {
           }
           return Center(
             child: SizedBox(
-              width: 80,
-              height: 80,
-              child: CircularProgressIndicator(
-                color: CustomColors().white,
-                backgroundColor: CustomColors().blueMain,
-              ),
-            ),
+                height: 120, width: 120, child: CustomImages().logoAgetic),
           );
         },
       ),

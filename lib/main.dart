@@ -1,3 +1,4 @@
+import 'package:Secli/auth/auth_check.dart';
 import 'package:Secli/list_links.dart';
 import 'package:flutter/material.dart';
 import 'package:Secli/home.dart';
@@ -18,7 +19,7 @@ class SecliApp extends StatelessWidget {
         child: MaterialApp(
           title: 'SECLI',
           theme: tema,
-          home: const Home(),
+          home: const AuthCheck(),
         ));
   }
 }

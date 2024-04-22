@@ -24,14 +24,16 @@ class WebviewSystemState extends State<WebviewSystem> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      SizedBox(
-        height: 5,
-        child: LinearProgressIndicator(
-          value: webProgress,
-          color: CustomColors().darkBlueMain,
-          backgroundColor: CustomColors().whiteBottomNavigation,
-        ),
-      ),
+      webProgress < 1
+          ? SizedBox(
+              height: 5,
+              child: LinearProgressIndicator(
+                value: webProgress,
+                color: CustomColors().darkBlueMain,
+                backgroundColor: CustomColors().whiteBottomNavigation,
+              ),
+            )
+          : const SizedBox(),
       Expanded(
           child: Stack(children: <Widget>[
         WebView(

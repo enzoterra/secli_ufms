@@ -15,7 +15,7 @@ class TopBar extends StatelessWidget {
     if (isSettings) {
       return AppBar(
         backgroundColor: CustomColors().blueMain,
-        title: CustomImages().topbar_drawer,
+        title: CustomImages().logoAgetic,
         centerTitle: true,
         leading: IconButton(
           icon: CustomIcons().arrowback,
@@ -26,7 +26,7 @@ class TopBar extends StatelessWidget {
     } else {
       return AppBar(
         backgroundColor: CustomColors().blueMain,
-        title: CustomImages().topbar_drawer,
+        title: CustomImages().logoAgetic,
         centerTitle: true,
         actions: [
           IconButton(
